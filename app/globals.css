@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --amber: #f59e0b;
+  --amber-light: #fcd34d;
+  --red: #ef4444;
+  --green: #22c55e;
+}
+
+/* Force dark background regardless of system light/dark preference */
+html {
+  background-color: #09090b; /* zinc-950 */
+  font-size: 16px; /* Anchor all rem units — prevents mobile browser scaling */
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: dark;
+    background-color: #09090b;
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  overscroll-behavior: none;
+}
+
+@keyframes scan-line {
+  0% { top: 4px; }
+  50% { top: calc(100% - 4px); }
+  100% { top: 4px; }
+}
+
+.scan-line {
+  animation: scan-line 2s ease-in-out infinite;
+}
+
+.key-btn:active {
+  transform: scale(0.93);
+}
+
+/* iOS safe area support */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.pt-safe {
+  padding-top: max(16px, env(safe-area-inset-top));
+}
